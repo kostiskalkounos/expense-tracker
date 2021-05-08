@@ -6,14 +6,14 @@ const ExpenseForm = () => {
    * One state example
 
    const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
+    title: "",
+    amount: "",
+    date: "",
   });
 
   const titleChangeHandler = (event) => {
     setUserInput((prevState) => {
-      return {...prevState, enteredTitle: event.target.value};
+      return {...prevState, title: event.target.value};
     });
   };
 
@@ -25,7 +25,7 @@ const ExpenseForm = () => {
    * const titleChangeHandler = (event) => {
    *   setUserInput({
    *     ...userInput,
-   *     enteredTitle: event.target.value,
+   *     title: event.target.value,
    *   });
    * };
  */
@@ -46,8 +46,20 @@ const ExpenseForm = () => {
     setEnteredDate(event.target.value);
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expenseData);
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
