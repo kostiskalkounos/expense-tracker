@@ -2,6 +2,34 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
+  /*
+   * One state example
+
+   const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
+
+  const titleChangeHandler = (event) => {
+    setUserInput((prevState) => {
+      return {...prevState, enteredTitle: event.target.value};
+    });
+  };
+
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+   * The following fails in edge cases, because React doesn't update
+   * immediately but instead it schedules the updates
+
+   * const titleChangeHandler = (event) => {
+   *   setUserInput({
+   *     ...userInput,
+   *     enteredTitle: event.target.value,
+   *   });
+   * };
+ */
+
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
